@@ -7,16 +7,13 @@ export default defineConfig({
 
   plugins: [reactRefresh()],
   server: {
-    host: process.env.VITE_HOST || null,
-    port: process.env.VITE_PORT || null,
+    host: process.env.VITE_HOST || 'localhost',
+    port: process.env.VITE_PORT || 5173,
     hmr: {
       clientPort: process.env.VITE_CLIENT_PORT || null
     },
     proxy: {
-      '^/api': {
-        target: 'http://api',
-        changeOrigin: true
-      }
+      '/api': 'http://localhost:5000'
     }
   }
 })
